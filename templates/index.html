@@ -12,9 +12,9 @@
     <div id="main-page">
         <div id="left-side">
             <div id="intro">
-                <h1>Jannis Fiechter</h1>
-                <h2>Platform Engineer · DevOps & Security Enthusiast</h2>
-                <p>I build secure, efficient, and user-focused digital systems — from Linux servers to pixel-perfect web apps.</p>
+                <h1>{{ data.about.name }}</h1>
+                <h3>{{ data.about.title }}</h3>
+                <p>{{ data.about.description }}</p>
             </div>
             <div id="selector">
                 <ul>
@@ -24,70 +24,52 @@
                 </ul>
             </div>
             <div id="links">
-                <span>Github</span>
-                <span>Linkedin</span>
-                <span>HackTheBox</span>
-                <span>Leetcode</span>
-                <span>E-Mail</span>
+                {% for link in data.links %}
+                    <a href="{{ link.url }}" target="_blank">
+                    <img src="{{ link.icon }}" alt="{{ link.name }}" width="20"></a>
+                {% endfor %}
             </div>
         </div>
         <div id="right-side">
             <div id="about-me">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                <p>{{ data.about.txt }}</p>
             </div>
             <div id="experiences">
-
-                <div class="experience-box">
-                    <div class="expirience-timespan">
-                        <span>2025 — PRESENT</span>
-                    </div>
-                    <div class="experience-description">
-                        <strong>Platform Engineer · SPIE ICS</strong>
-                        <p>Develop and maintain internal platforms, automate infrastructure, and support secure system design. Collaborate across teams to embed security best practices into DevOps workflows and platform engineering.</p>
-                    </div>
-                    <div class="expirience-skills">
-                        <span>Linux</span>
-                        <span>Docker</span>
-                        <span>Ansible</span>
-                        <span>Python</span>
-                        <span>Security</span>
-                    </div>
-                </div>
-
-                <div class="experience-box">
-                    <div class="expirience-timespan">
-                        <span>2023 — 2024</span>
-                    </div>
-                    <div class="experience-description">
-                        <strong>Platform Engineer · Frama AG</strong>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore </p>
-                    </div>
-                    <div class="expirience-skills">
-                        <span>XXX</span>
-                        <span>XXX</span>
-                        <span>XXX</span>
-                        <span>XXX</span>
-                        <span>XXX</span>
-                    </div>
-                </div>
-
+                {% for item in data.experience %}
+                    <a href="{{ item.link }}">
+                        <div class="experience-box">
+                            <div class="expirience-timespan">
+                                <span>{{ item.timerange }}</span>
+                            </div>
+                            <div class="experience-description">
+                                <strong>{{ item.title }}</strong>
+                                <p class="position">{{ item.position }}</p>
+                                <p class="description">{{ item.description }}</p>
+                            </div>
+                            <div class="tags">
+                                {% for tag in item.tags %}
+                                    <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
             <div id="projects">
-
-                <div class="project-box">
-                    <div class="project-img"></div>
-                    <div class="project-description">
-                        <strong>Title</strong>
-                        <p>Description</p>
-                    </div>
-                    <div class="project-skills">A B C</div>
-                </div>
-
-                <div class="project-box">
-                    <div class="project-img"></div>
-                    <div class="project-description"></div>
-                    <div class="project-skills"></div>
-                </div>
-
+                {% for item in data.projects %}
+                    <a href="{{ item.link }}">
+                        <div class="project-box">
+                            <div class="experience-description">
+                                <strong>{{ item.title }}</strong>
+                                <p class="description">{{ item.description }}</p>
+                            </div>
+                            <div class="tags">
+                                {% for tag in item.tags %}
+                                    <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
