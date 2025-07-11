@@ -35,49 +35,55 @@
         <div id="right-side"> 
             <section id="about-me">
                 <div id="about-me">
+                    <h2>About me</h2>
                     <p>{{ data.about.txt }}</p>
                 </div>
             </section> 
             <section id="experiences">
                 <div id="experiences">
-                    {% for item in data.experience %}
-                        <a href="{{ item.link }}" class="link-reset" target="_blank">
-                            <div class="experience-box">
-                                <div class="expirience-timespan">
-                                    <span>{{ item.timerange }}</span>
+                    <h2>Experience</h2>
+                        {% for item in data.experience %}
+                            <a href="{{ item.link }}" class="link-reset" target="_blank">
+                                <div class="card">
+                                    <div class="card-timespan">
+                                        <span>{{ item.timerange }}</span>
+                                    </div>
+                                    <div class="card-description">
+                                        <strong>{{ item.title }}  ·  {{ item.company }}</strong>
+                                        <p class="position">{{ item.position }}</p>
+                                        <p class="description">{{ item.description }}</p>
+                                    </div>
+                                    <div class="tags">
+                                        {% for tag in item.tags %}
+                                            <span class="tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
                                 </div>
-                                <div class="experience-description">
-                                    <strong>{{ item.title }}  ·  {{ item.company }}</strong>
-                                    <p class="position">{{ item.position }}</p>
-                                    <p class="description">{{ item.description }}</p>
-                                </div>
-                                <div class="tags">
-                                    {% for tag in item.tags %}
-                                        <span class="tag">{{ tag }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </a>
-                    {% endfor %}
+                            </a>
+                        {% endfor %}
                 </div>
             </section>
             <section id="projects">
                 <div id="projects">
-                    {% for item in data.projects %}
-                        <a href="{{ item.link }}" class="link-reset" target="_blank">
-                            <div class="project-box">
-                                <div class="experience-description">
-                                    <strong>{{ item.title }}</strong>
-                                    <p class="description">{{ item.description }}</p>
+                    <h2>Projects</h2>
+                        {% for item in data.projects %}
+                            <a href="{{ item.link }}" class="link-reset" target="_blank">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="{{ item.img }}" alt="{{ item.title }}" class="project-image">
+                                    </div>
+                                    <div class="card-description">
+                                        <strong>{{ item.title }}</strong>
+                                        <p class="description">{{ item.description }}</p>
+                                    </div>
+                                    <div class="tags">
+                                        {% for tag in item.tags %}
+                                            <span class="tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
                                 </div>
-                                <div class="tags">
-                                    {% for tag in item.tags %}
-                                        <span class="tag">{{ tag }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </a>
-                    {% endfor %}
+                            </a>
+                        {% endfor %}
                 </div>
             </section>
             <footer>  

@@ -58,6 +58,13 @@ p {
     border-bottom: 1px solid var(--color-light);
     min-height: 40vh;
   }
+  #links {
+    position: static;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /* === NAV CORE === */
@@ -134,11 +141,18 @@ nav a.active::after {
   /*filter: grayscale(100%); */
 }
 
+.project-image{
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
 #experiences {
   margin-top: 100px;
 }
 
-.experience-box {
+.card {
   margin-bottom: 20px;
   padding: 10px; 
   background: rgba(255, 255, 255, 0.02);
@@ -151,7 +165,7 @@ nav a.active::after {
   margin-bottom: 2rem;
 }
 
-.experience-box:hover {
+.card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
   border-color: rgba(255, 255, 255, 0.1);
@@ -162,11 +176,17 @@ nav a.active::after {
   margin-top: 100px;
 }
 
-.project-box {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid var(--color-light);
-  border-radius: 15px;
+#left-side {
+  position: relative;
+}
+
+#links {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .tags {
@@ -180,4 +200,21 @@ nav a.active::after {
     border:#dee2e6 1px solid;
     border-radius: 16px;
     background-color: var(--color-primary);
+}
+
+/* Project card layout: image left, content right */
+#projects .card {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+#projects .card-image {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+#projects .card-description {
+  flex: 1 1 0;
 }
