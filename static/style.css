@@ -8,7 +8,8 @@
 html, body {
   height: 100%;
   margin: 0;
-  background-color: var(--color-bg-dark);
+  background: radial-gradient(circle at top left, #1f2a40, #121c2f);
+  color: var(--color-light);
   color: var(--color-light);
 }
 
@@ -39,6 +40,14 @@ p {
   overflow-y: auto;
 }
 
+#right-side {
+  padding-top: 0;
+}
+
+#about-me{
+  padding-top: 2rem;
+}
+
 /* Responsive: stack on small screens */
 @media (max-width: 768px) {
   #main-page {
@@ -50,6 +59,58 @@ p {
     min-height: 40vh;
   }
 }
+
+/* === NAV CORE === */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+           /* horizontal; drop this line for a vertical sidebar */
+  gap: 2rem;
+}
+
+nav a {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-decoration: none;
+  color: var(--color-accent);
+  transition: color .25s ease;
+}
+
+/* --- underline “grow” effect --- */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;         /* tweak if font-size changes */
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* --- hover   --- */
+nav a:hover, nav a:focus {
+  color: var(--color-light);
+}
+nav a:hover::after, nav a:focus::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- active link (set via JS or server-side) --- */
+nav a.active {
+  color: var(--color-light);
+}
+nav a.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 
 .link-reset {
   all: unset;
@@ -79,9 +140,21 @@ p {
 
 .experience-box {
   margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid var(--color-light);
-  border-radius: 15px;
+  padding: 10px; 
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.experience-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 
