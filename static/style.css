@@ -141,12 +141,32 @@ nav a.active::after {
   /*filter: grayscale(100%); */
 }
 
-.project-image{
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+#links img {
+  width: 30px;
+  height: 30px;
+  filter: grayscale(100%);
+  transition: 
+    filter 0.3s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  opacity: 0.8;
 }
+
+#links img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.project-image {
+  max-height: max-content;
+  height: min-content;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 
 #experiences {
   margin-top: 100px;
@@ -196,25 +216,46 @@ nav a.active::after {
 }
 
 .tag{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 5px 12px;
-    border:#dee2e6 1px solid;
+    /* border:#dee2e6 1px solid; */
     border-radius: 16px;
-    background-color: var(--color-primary);
+    margin-top: auto;
 }
 
 /* Project card layout: image left, content right */
+/* 1. Make .card a horizontal flex row */
 #projects .card {
   display: flex;
-  align-items: flex-start;
-  gap: 2rem;
+  flex-direction: row;
+  align-items: flex-start; /* align tops */
+  gap: 1.5rem;
 }
 
 #projects .card-image {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
+  flex-shrink: 0;
+  display: block;
 }
 
-#projects .card-description {
-  flex: 1 1 0;
+#projects .project-image {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+#projects .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Optional: tag layout */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
